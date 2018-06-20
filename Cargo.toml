@@ -1,0 +1,6 @@
+[package]
+name = "pgp-words"
+version = "1.0.0"
+authors = ["Tim Marinin <mt@marinintim.com>"]
+
+[dependencies]
