@@ -5,13 +5,12 @@ use std::io::Read;
 fn main() {
     let mut stdin = std::io::stdin();
     let mut s = String::new();
-    stdin.read_to_string(&mut s);
+    stdin.read_to_string(&mut s).unwrap();
     let w = tokenize(&s);
-    let wslice: Vec<&str> = w.iter().map(String::as_ref).collect();
-    let bytes = pgp_words::to_bytes(&wslice);
+    let bytes = pgp_words::to_bytes(&w);
     if let Some(bytes) = bytes {
         for b in bytes {
-            print!("{:x}", b);
+            print!("{:02X}", b);
         }
         println!("");
     }
