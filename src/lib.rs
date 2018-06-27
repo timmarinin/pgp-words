@@ -1040,11 +1040,11 @@ fn word_for <'a>(byte: u8, is_even: bool) -> &'a str {
     }
 }
 
-pub fn to_bytes(words: &[&str]) -> Option<Vec<u8>> {
+pub fn to_bytes<S: AsRef<str>>(words: &[S]) -> Option<Vec<u8>> {
     let mut bytes = Vec::with_capacity(words.len());
     let mut is_even = true;
     for word in words {
-        let byte_opt = byte_for(*word);
+        let byte_opt = byte_for(word.as_ref());
         match byte_opt {
             Some((byte, evenness)) => {
                 if evenness != is_even {
